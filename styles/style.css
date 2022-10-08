@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+}
+
+.palette {
+  height: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+#reset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 15px;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid red;
+}
+
+.colors-row {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.color {
+  width: calc((55% - 100px) / 4);
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.color[data-level='1'] {
+  background-color: #0dcf5e;
+}
+.color[data-level='2'] {
+  background-color: #04886e;
+}
+.color[data-level='3'] {
+  background-color: #2980b9;
+}
+.color[data-level='4'] {
+  background-color: #8e44ad;
+}
+.color[data-level='5'] {
+  background-color: #f1c40f;
+}
+.color[data-level='6'] {
+  background-color: #f39c12;
+}
+.color[data-level='7'] {
+  background-color: #e67e22;
+}
+.color[data-level='8'] {
+  background-color: #d35400;
+}
+.color[data-level='9'] {
+  background-color: #c0392b;
+  position: relative;
+}
+.color[data-level='9']::after {
+  content: 'MAXED';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.color:hover {
+  box-shadow: rgba(255, 0, 0, 0.16) 0px 0px 0px 8px;
+}
+
+.color.selected {
+  animation: selected 600ms infinite;
+}
+
+@keyframes selected {
+  20% {
+    box-shadow: rgba(255, 0, 0, 0.16) 0px 0px 0px 2px;
+  }
+  40% {
+    box-shadow: rgba(255, 0, 0, 0.16) 0px 0px 0px 4px;
+  }
+  60% {
+    box-shadow: rgba(255, 0, 0, 0.16) 0px 0px 0px 6px;
+  }
+  80% {
+    box-shadow: rgba(255, 0, 0, 0.16) 0px 0px 0px 8px;
+  }
+  100% {
+    box-shadow: rgba(255, 0, 0, 0.16) 0px 0px 0px 10px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .color {
+    width: calc((100% - 60px) / 4);
+  }
+}
